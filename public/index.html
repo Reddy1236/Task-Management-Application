@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="auth-panel" id="authPanel">
+        <div class="brand">
+          <span class="brand-mark">TF</span>
+          <div>
+            <h1>TaskFlow</h1>
+            <p>Plan, update, and track the work that matters.</p>
+          </div>
+        </div>
+
+        <div class="auth-card">
+          <div class="tabs" role="tablist" aria-label="Authentication">
+            <button class="tab is-active" id="loginTab" type="button">Login</button>
+            <button class="tab" id="registerTab" type="button">Register</button>
+          </div>
+
+          <form id="authForm" class="form">
+            <label class="field register-only is-hidden">
+              <span>Name</span>
+              <input id="nameInput" name="name" autocomplete="name" />
+            </label>
+            <label class="field">
+              <span>Email</span>
+              <input id="emailInput" name="email" type="email" autocomplete="email" required />
+            </label>
+            <label class="field">
+              <span>Password</span>
+              <input id="passwordInput" name="password" type="password" autocomplete="current-password" minlength="6" required />
+            </label>
+            <button class="primary-btn" id="authSubmit" type="submit">Login</button>
+            <p class="message" id="authMessage" role="status"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="app-panel is-hidden" id="appPanel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Workspace</p>
+            <h1 id="welcomeTitle">Tasks</h1>
+          </div>
+          <button class="ghost-btn" id="logoutBtn" type="button">Logout</button>
+        </header>
+
+        <section class="stats-grid" aria-label="Task statistics">
+          <article class="stat">
+            <span id="totalCount">0</span>
+            <p>Total</p>
+          </article>
+          <article class="stat">
+            <span id="todoCount">0</span>
+            <p>To do</p>
+          </article>
+          <article class="stat">
+            <span id="progressCount">0</span>
+            <p>In progress</p>
+          </article>
+          <article class="stat">
+            <span id="doneCount">0</span>
+            <p>Done</p>
+          </article>
+        </section>
+
+        <section class="workspace">
+          <aside class="task-editor" aria-label="Task editor">
+            <h2 id="editorTitle">Create Task</h2>
+            <form id="taskForm" class="form">
+              <input id="taskId" type="hidden" />
+              <label class="field">
+                <span>Title</span>
+                <input id="taskTitle" maxlength="90" required />
+              </label>
+              <label class="field">
+                <span>Description</span>
+                <textarea id="taskDescription" rows="4" maxlength="500"></textarea>
+              </label>
+              <div class="split-fields">
+                <label class="field">
+                  <span>Status</span>
+                  <select id="taskStatus">
+                    <option value="todo">To do</option>
+                    <option value="in-progress">In progress</option>
+                    <option value="done">Done</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Priority</span>
+                  <select id="taskPriority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </label>
+              </div>
+              <label class="field">
+                <span>Due date</span>
+                <input id="taskDueDate" type="date" />
+              </label>
+              <div class="actions">
+                <button class="primary-btn" id="taskSubmit" type="submit">Create Task</button>
+                <button class="ghost-btn" id="cancelEditBtn" type="button">Cancel</button>
+              </div>
+              <p class="message" id="taskMessage" role="status"></p>
+            </form>
+          </aside>
+
+          <section class="task-board">
+            <div class="board-tools">
+              <label class="search">
+                <span>Search</span>
+                <input id="searchInput" placeholder="Search tasks" />
+              </label>
+              <select id="filterStatus" aria-label="Filter by status">
+                <option value="all">All statuses</option>
+                <option value="todo">To do</option>
+                <option value="in-progress">In progress</option>
+                <option value="done">Done</option>
+              </select>
+            </div>
+            <div class="task-list" id="taskList" aria-live="polite"></div>
+            <div class="empty-state is-hidden" id="emptyState">
+              <h2>No tasks yet</h2>
+              <p>Create your first task to start tracking progress.</p>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

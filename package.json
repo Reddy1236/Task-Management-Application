@@ -1,0 +1,21 @@
+{
+  "name": "task-management-application",
+  "version": "1.0.0",
+  "description": "Full-stack task management web application with authentication and task CRUD.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "tasks",
+    "auth",
+    "crud",
+    "sse"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
